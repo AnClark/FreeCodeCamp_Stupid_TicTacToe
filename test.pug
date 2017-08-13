@@ -1,0 +1,32 @@
+doctype html
+
+title Tik Tac Toe Test
+link(href="css/tic_tac_toe.css", rel="stylesheet")
+
+
+body
+    div.title-line
+        h2 Tic Tac Toe Test
+        button(onclick="reset_game()") Reset
+        div.clear
+
+    div.tictactoe-container
+        div.cell-line
+            div#cell-1.cell
+            div#cell-2.cell
+            div#cell-3.cell
+            div.clear
+
+        div.cell-line
+            div#cell-4.cell
+            div#cell-5.cell
+            div#cell-6.cell
+            div.clear
+
+        div.cell-line
+            div#cell-7.cell
+            div#cell-8.cell
+            div#cell-9.cell
+            div.clear
+
+    script(src="js/tic_tac_toe.js")

@@ -1,0 +1,128 @@
+/**
+ * Stylesheet for Tic Tac Toe game by AnClark
+ * Created by AnCla on 2017/8/10.
+ */
+
+/**
+ Tool Classes
+ */
+.clear
+{
+  clear: both;
+}
+
+
+
+/**
+ Game Elements
+ */
+
+/** Container **/
+
+// Centerize game container
+// NOTICE: This option only take effect when you specify a valid width for the container.
+// Width is specified in @media query.
+body{
+  text-align: center;
+}
+
+.tictactoe-container{
+  width: 610px;
+  margin: 0 auto;
+
+  padding-top: 3em;
+}
+
+/** Cell **/
+
+.cell
+{
+  float: left;
+
+  border: solid 1px;
+  height: 150px;
+  width: 200px;
+
+  line-height: 150px;
+  text-align: center;
+
+  font-size: 5em;
+  font-family: Helvetica, Arial, monospace;
+
+  cursor: pointer !important;
+}
+
+// Fit with different screen size
+@media screen and(max-width: 640px) {
+  .cell
+  {
+    height: 112.5px;
+    width: 150px;
+
+    line-height: 112.5px;
+  }
+
+  .tictactoe-container
+  {
+    width: 460px;         // Let centerize take effect
+    overflow: hidden;     // Prevent cells from soft-wrapping if the screen is too narrow
+  }
+}
+
+@media screen and(max-width: 480px) {
+  body{
+    overflow: scroll;
+  }
+
+  .cell
+  {
+    height: 75px;
+    width: 100px;
+
+    line-height: 75px;
+
+    font-size: 3em;
+  }
+
+  .tictactoe-container
+  {
+    width: 310px;         // Let centerize take effect
+    overflow: hidden;     // Prevent cells from soft-wrapping if the screen is too narrow
+  }
+}
+
+
+
+/** Lines **/
+
+.title-line
+{
+  padding-left: 1em;
+  padding-right: 1em;
+
+  color: white;
+  background-color: #007029;
+
+  h1, h2{
+    float: left;
+  }
+
+  button{
+    float: right;
+    font-size: 2em;
+
+    margin-top: 0.5em;
+  }
+}
+
+
+/**
+ Global decorations
+ */
+
+body{
+  font-family: "Microsoft YaHei UI", serif;
+
+  margin: 0;
+  background-color: #e2e2e1;
+}
