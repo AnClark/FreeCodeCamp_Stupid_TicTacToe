@@ -1,0 +1,13 @@
+// Tic Tac Toe piece chooser
+div#piece-chooser.modal.fade
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                h1.modal-title Tic Tac Toe Test
+            div.modal-body
+                p Choose your piece
+            div.modal-footer
+                button.btn.btn-primary#piece-X(data-dismiss="modal", onclick="Piece.setPlayer_OX()") X
+                button.btn.btn-primary#piece-O(data-dismiss="modal", onclick="Piece.setPlayer_XO()") O
+
+

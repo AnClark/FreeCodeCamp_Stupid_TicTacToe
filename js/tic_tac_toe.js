@@ -1,9 +1,38 @@
+/**
+ * Tool Classes
+ */
+
+ /**
+ * Selector API: Select an element by ID.
+ * @param selector The ID of target element.
+ * @return {Element}
+ * @private
+ */
 var _sel = function (selector) {
   return document.getElementById(selector);
 };
 
+/**
+ * Selector API: Select an element by CSS selector. Same as jQuery.
+ * @param selector A valid CSS selector.
+ * @return {NodeList}
+ * @private
+ */
 var _selAll = function (selector) {
     return document.querySelectorAll(selector);
+};
+
+
+var _showAlert = function (ID) {
+    function hideAlert() {
+        setTimeout(function(){
+            $("#" + ID).hide(1000);
+        }, 3000)
+    }
+
+    $("#" + ID).show(500, hideAlert());
+
+
 };
 
 
@@ -22,7 +51,17 @@ var PC_or_Player = 1;
  */
 var Piece = {
   PC: "X",
-  Player: "O"
+  Player: "O",
+
+  setPlayer_XO: function () {
+      Piece.PC = "X";
+      Piece.Player = "O";
+  },
+
+  setPlayer_OX: function () {
+      Piece.PC = "O";
+      Piece.Player = "X";
+  }
 };
 
 
@@ -145,24 +184,26 @@ function is_game_ends() {
 /**
  * Reset game.
  */
-function reset_game() {
+function reset_game(give_tips) {
     // Initialize cells
     for(let i = 0; i < _selAll(".cell").length; i++){
         _selAll(".cell")[i].currentState = "empty";
         _selAll(".cell")[i].innerText = "";
     }
 
-    // TODO: reset game state text
-
+    // If give_tips = true, Show reset game state alert
+    // give_tips is the switch for this alert. When resetting at game ends, this is unexpected.
+    if(give_tips)
+        _showAlert("alert-game-reset");
 }
 
 /**
  * Call when a stage ends, then it will start a new game.
  */
 function end_and_restart_game(){
-    alert("GAME ENDS");
+    _showAlert("alert-game-ends");
 
-    setTimeout(reset_game, 2000);
+    setTimeout(reset_game, 2000 + 1000);
 }
 
 /**
@@ -170,12 +211,16 @@ function end_and_restart_game(){
  * Run on every time the game loads.
  */
 function init_game() {
+    // Initialize cells
     for(let i = 0; i < _selAll(".cell").length; i++){
         // Initialize: Set cell text as empty
         _selAll(".cell")[i].currentState = "empty";
 
         _selAll(".cell")[i].onclick = drop_steps;
     }
+
+    // Let user to choose piece
+    $('#piece-chooser').modal('show');
 }
 
 

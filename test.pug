@@ -1,14 +1,17 @@
 doctype html
 
 title Tik Tac Toe Test
+link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel="stylesheet")
 link(href="css/tic_tac_toe.css", rel="stylesheet")
 
 
 body
     div.title-line
         h2 Tic Tac Toe Test
-        button(onclick="reset_game()") Reset
+        button(onclick="reset_game(give_tips=true)").btn.btn-warning Reset
         div.clear
+
+    include alerts.pug
 
     div.tictactoe-container
         div.cell-line
@@ -29,4 +32,11 @@ body
             div#cell-9.cell
             div.clear
 
+    include dialogs.pug
+
+    // Bootstrap and its dependency - jQuery
+    script(src="lib/jquery_1.11.0.js")
+    script(src="lib/bootstrap_3.3.2.js")
+
+    // My game script
     script(src="js/tic_tac_toe.js")
