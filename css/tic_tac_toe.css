@@ -1,0 +1,86 @@
+/**
+ * Stylesheet for Tic Tac Toe game by AnClark
+ * Created by AnCla on 2017/8/10.
+ */
+/**
+ Tool Classes
+ */
+.clear {
+  clear: both;
+}
+/**
+ Game Elements
+ */
+/** Container **/
+body {
+  text-align: center;
+}
+.tictactoe-container {
+  width: 610px;
+  margin: 0 auto;
+  padding-top: 3em;
+}
+/** Cell **/
+.cell {
+  float: left;
+  border: solid 1px;
+  height: 150px;
+  width: 200px;
+  line-height: 150px;
+  text-align: center;
+  font-size: 5em;
+  font-family: Helvetica, Arial, monospace;
+  cursor: pointer !important;
+}
+@media screen and (max-width: 640px) {
+  .cell {
+    height: 112.5px;
+    width: 150px;
+    line-height: 112.5px;
+  }
+  .tictactoe-container {
+    width: 460px;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 480px) {
+  body {
+    overflow: scroll;
+  }
+  .cell {
+    height: 75px;
+    width: 100px;
+    line-height: 75px;
+    font-size: 3em;
+  }
+  .tictactoe-container {
+    width: 310px;
+    overflow: hidden;
+  }
+}
+/** Lines **/
+.title-line {
+  padding: 0 2em 0.5em 2em;
+  color: white;
+  background-color: #007029;
+}
+.title-line h1,
+.title-line h2 {
+  float: left;
+}
+.title-line button {
+  float: right;
+  font-size: 1.5em;
+  margin-top: 0.8em;
+}
+/**
+ Global decorations
+ */
+body {
+  font-family: "Microsoft YaHei UI", serif;
+  margin: 0;
+  background-color: #e2e2e1;
+}
+.alert {
+  display: none;
+}

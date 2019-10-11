@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<title>Tik Tac Toe Test</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/tic_tac_toe.css" rel="stylesheet">
+<body>
+  <div class="title-line">
+    <h2>Tic Tac Toe Test</h2>
+    <button class="btn btn-warning" onclick="reset_game(give_tips=true)">Reset</button>
+    <div class="clear"></div>
+  </div>
+  <!-- Game end alert-->
+  <div class="alert alert-danger" id="alert-game-ends">
+    <h2>GAME OVER &nbsp;&nbsp; <br><small>2 secs later will be a new game.</small></h2>
+  </div>
+  <!-- Game win alert-->
+  <div class="alert alert-success" id="alert-game-wins">
+    <h2>YOU WIN! &nbsp;&nbsp; <br><small>2 secs later will be a new game.</small></h2>
+  </div>
+  <!-- No one wins alert-->
+  <div class="alert alert-warning" id="alert-no-one-wins">
+    <h2>OOPS! NO ONE WINS! &nbsp;&nbsp; <br><small>2 secs later will be a new game.</small></h2>
+  </div>
+  <!-- Game reset alert-->
+  <div class="alert alert-warning" id="alert-game-reset">
+    <h2>GAME RESET</h2>
+  </div>
+  <div class="tictactoe-container">
+    <div class="cell-line">
+      <div class="cell" id="cell-1"></div>
+      <div class="cell" id="cell-2"></div>
+      <div class="cell" id="cell-3"></div>
+      <div class="clear"></div>
+    </div>
+    <div class="cell-line">
+      <div class="cell" id="cell-4"></div>
+      <div class="cell" id="cell-5"></div>
+      <div class="cell" id="cell-6"></div>
+      <div class="clear"></div>
+    </div>
+    <div class="cell-line">
+      <div class="cell" id="cell-7"></div>
+      <div class="cell" id="cell-8"></div>
+      <div class="cell" id="cell-9"></div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!-- Tic Tac Toe piece chooser-->
+  <div class="modal fade" id="piece-chooser">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title">Tic Tac Toe Test</h1>
+        </div>
+        <div class="modal-body">
+          <p>Choose your piece</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="piece-X" data-dismiss="modal" onclick="Piece.setPlayer_OX()">X</button>
+          <button class="btn btn-primary" id="piece-O" data-dismiss="modal" onclick="Piece.setPlayer_XO()">O</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap and its dependency - jQuery-->
+  <script src="lib/jquery_3.4.1.js"></script>
+  <script src="lib/bootstrap_3.3.2.js"></script>
+  <!-- My game script-->
+  <script src="js/tic_tac_toe.js"></script>
+</body>
