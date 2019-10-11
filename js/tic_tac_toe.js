@@ -45,6 +45,8 @@ var _showAlert = function (ID) {
  */
 var PC_or_Player = 1;
 
+var Winner = "";
+
 /**
  * Specialize which piece PC or player takes.
  * @type {{PC: string, Player: string}}
@@ -121,7 +123,9 @@ function drop_steps() {
         // STEP3: Check if game ends.
         // If game ends, ready to start a new game.
         if(is_game_ends()){
-            end_and_restart_game();
+            // Pass the winner state info to end_and_restart_game
+            //      to show proper error toast.
+            end_and_restart_game(is_game_ends());
         }
     }
 }
@@ -133,12 +137,20 @@ function drop_steps() {
  */
 function is_game_ends() {
     function is_anyone_wins(){
+        
         function allThreeCellsAreSame(cell1, cell2, cell3){
             cell1 = _sel(cell1);
             cell2 = _sel(cell2);
             cell3 = _sel(cell3);
-            return((cell1.innerText === "X" && cell2.innerText === "X" && cell3.innerText === "X")
-                    || (cell1.innerText === "O" && cell2.innerText === "O" && cell3.innerText === "O"));
+            
+            var X_wins = (cell1.innerText === "X" && cell2.innerText === "X" && cell3.innerText === "X");
+            var O_wins = (cell1.innerText === "O" && cell2.innerText === "O" && cell3.innerText === "O");
+            if (X_wins && !O_wins)
+                Winner = "X";
+            else
+                Winner = "O"
+
+            return X_wins || O_wins;
         }
 
         if(    allThreeCellsAreSame("cell-1", "cell-2", "cell-3")
@@ -167,17 +179,11 @@ function is_game_ends() {
             }
         }
 
+        Winner = "no_one_wins";
         return !has_empty_cell;
     }
 
-    if(is_anyone_wins())
-        return [true, "anyone_wins"];
-
-    if(is_no_one_wins())
-        return [true, "no_one_wins"];
-
-    return false;
-
+    return is_anyone_wins() || is_no_one_wins();
 }
 
 
@@ -201,7 +207,18 @@ function reset_game(give_tips) {
  * Call when a stage ends, then it will start a new game.
  */
 function end_and_restart_game(){
-    _showAlert("alert-game-ends");
+    switch (Winner) {
+        case Piece.Player:
+            _showAlert("alert-game-wins");
+            break;
+        case Piece.PC:
+            _showAlert("alert-game-ends");
+            break;
+        default:
+            _showAlert("alert-no-one-wins");
+            break;
+    }
+
 
     setTimeout(reset_game, 2000 + 1000);
 }
